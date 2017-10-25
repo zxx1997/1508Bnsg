@@ -21,9 +21,9 @@ public class AddDelView extends LinearLayout{
     private OnItemClick onItemClick;
 
     public interface OnItemClick {
-        public void onItemAddClick(int count);
+         void onItemAddClick(int count);
 
-        public void onItemDelClick(int count);
+         void onItemDelClick(int count);
     }
 
     public void setOnItemClick(OnItemClick onItemClick) {
@@ -33,18 +33,17 @@ public class AddDelView extends LinearLayout{
     public AddDelView(Context context) {
         super(context);
     }
-    public AddDelView(Context context, @Nullable AttributeSet attrs) {
+    public AddDelView(final Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.add_del,this);
-        TextView add=findViewById(R.id.add);
-        TextView del=findViewById(R.id.del);
-        num=findViewById(R.id.num);
-
+        TextView add=findViewById(R.id.goods_add);
+        TextView del=findViewById(R.id.goods_del);
+        num=findViewById(R.id.goods_num);
         add.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 num.setText(++count+"");
-                onItemClick.onItemAddClick(1);
+                //onItemClick.onItemAddClick(1);
             }
         });
         del.setOnClickListener(new OnClickListener() {
@@ -52,7 +51,7 @@ public class AddDelView extends LinearLayout{
             public void onClick(View view) {
                 if(count!=1){
                     count=--count;
-                    onItemClick.onItemDelClick(-1);
+                   // onItemClick.onItemDelClick(-1);
                 }
                 num.setText(count>=1?count+"":1+"");
             }

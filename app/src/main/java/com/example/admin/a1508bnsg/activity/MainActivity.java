@@ -30,10 +30,14 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         manager=getSupportFragmentManager();
-
-        manager.beginTransaction().replace(R.id.fl,new FragmentIndex()).commit();
-
         initView();
+        Intent intent=getIntent();
+        int card=intent.getIntExtra("card",0);
+        if(card==6){
+            manager.beginTransaction().replace(R.id.fl,new FragmentCart()).commit();
+        }else{
+            manager.beginTransaction().replace(R.id.fl,new FragmentIndex()).commit();
+        }
     }
 
     private void initView() {

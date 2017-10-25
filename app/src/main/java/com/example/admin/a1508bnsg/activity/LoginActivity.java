@@ -1,6 +1,8 @@
 package com.example.admin.a1508bnsg.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -62,6 +64,12 @@ public class LoginActivity extends BaseActivity {
                             RegBean bean=gson.fromJson(result,RegBean.class);
                             int code=bean.getCode();
                             if(code==200){
+                                //保存key值
+                                SharedPreferences sp = getSharedPreferences("nsg", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor edit = sp.edit();
+                                edit.putString("key", bean.getDatas().getKey());
+                                edit.commit();
+
                                 String user=bean.getDatas().getUsername();
                                 Intent intent = new Intent();
                                 intent.putExtra("u", user);
