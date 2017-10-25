@@ -1,10 +1,14 @@
 package com.example.admin.a1508bnsg.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -12,6 +16,7 @@ import com.example.admin.a1508bnsg.R;
 import com.example.admin.a1508bnsg.bean.GoodsDetailBean;
 import com.example.admin.a1508bnsg.net.Api;
 import com.example.admin.a1508bnsg.net.OkHttpUtils;
+import com.example.admin.a1508bnsg.widget.AddDelView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class GoodsDetailActivity extends BaseActivity {
@@ -25,6 +30,7 @@ public class GoodsDetailActivity extends BaseActivity {
     private ImageView goodsImageView2;
     private String goods_id;
     private GoodsDetailBean bean;
+    private PopupWindow popupWindow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +75,22 @@ public class GoodsDetailActivity extends BaseActivity {
     private void showPop(){
         View view=View.inflate(this,R.layout.goods_pop_item,null);
         View bt_add=view.findViewById(R.id.goods_bt_add);
+        AddDelView adv=view.findViewById(R.id.goods_adv);
+        popupWindow=new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT,60);
+        popupWindow.setBackgroundDrawable(new ColorDrawable());
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.showAtLocation(goodsR1, Gravity.BOTTOM,0,0);
+        bt_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
 
     }
+
+    /*
+    添加到购物车
+     */
+
 }

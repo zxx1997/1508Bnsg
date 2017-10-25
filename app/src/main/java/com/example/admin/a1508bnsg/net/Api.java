@@ -14,4 +14,7 @@ public interface Api {
     public static final String RIGHT = devIp + "/mobile/index.php?act=goods_class&gc_id=%s";
     public static final String GOODS_LIST = devIp + "/mobile/index.php?act=goods&op=goods_list&page=100";
     public static final String GOODS_DETAILS = devIp + "/mobile/index.php?act=goods&op=goods_detail&goods_id=%s";
+    public static final String ADD_CARD = devIp + "/mobile/index.php?act=member_cart&op=cart_add";
+    public static final String CARD = devIp + "/mobile/index.php?act=member_cart&op=cart_list";
+
 }
